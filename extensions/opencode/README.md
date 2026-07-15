@@ -1,8 +1,9 @@
 # opencode-toolbox-extension
 
-**Note:** This project is not built by the OpenCode team and is not affiliated with OpenCode / anomalyco in any way.
+> [!CAUTION]
+> This project is not built by the OpenCode team and is not affiliated with OpenCode / anomalyco in any way.
 
-Launches [OpenCode](https://opencode.ai/) inside the [opencode-toolbox](../../docs/opencode-toolbox.md) Podman Toolbx container from VS Code / Cursor.
+Launches [OpenCode](https://opencode.ai/) inside the [opencode-toolbox](../../docs/opencode-toolbox.md) Podman Toolbx container from VS Code / VSCodium.
 
 Extension ID: `alyshmahell.opencode-toolbox-extension`
 
@@ -15,7 +16,7 @@ Extension ID: `alyshmahell.opencode-toolbox-extension`
 toolbox create --image ghcr.io/alyshmahell/opencode-toolbox:1.18.2 --container opencode
 ```
 
-## Install in Cursor / VS Code
+## Install in VSCodium / VS Code
 
 1. Download the VSIX from the [latest release](https://github.com/AlyShmahell/toolboxai/releases/latest)  
    (`opencode-toolbox-extension-0.1.1.vsix`)

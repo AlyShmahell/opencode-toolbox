@@ -4,7 +4,7 @@
 
 ## Use
 
-### Host install (Ubuntu)
+### Prerequisite Installation on Host (Ubuntu/Debian)
 
 ```bash
 sudo apt install podman podman-compose podman-toolbox
@@ -17,9 +17,6 @@ toolbox create --image ghcr.io/alyshmahell/opencode-toolbox:1.18.2 --container o
 toolbox enter opencode
 ```
 
-Image tags track the bundled OpenCode version (`1.18.2`) plus `latest`.
-
-Prefer `/usr/local/bin/opencode` if a host install (e.g. Volta) shadows `opencode` on `PATH` under non-login `toolbox run`.
 
 ### First-time setup
 
@@ -37,17 +34,14 @@ Inside the toolbox TUI, run `/connect` to configure provider API keys. Config pe
 
 These run automatically — nothing extra to configure for normal use.
 
-#### PATH preference
+- #### PATH preference
 
 Interactive `toolbox enter` loads [`profile.d-opencode-toolbox`](../toolboxes/opencode/profile.d-opencode-toolbox), which prefers the toolbox OpenCode binary over a host install on `PATH`.
 
-#### Session wrapper
+- #### Session wrapper
 
 When started via the IDE extension, [`opencode-session`](../toolboxes/opencode/opencode-session) runs OpenCode in the foreground and stops it if `~/.cache/opencode-toolbox/heartbeat` goes stale. The extension refreshes that heartbeat while the session terminal is open.
 
-### Terminal recommendation
-
-OpenCode's TUI works best in modern terminal emulators (Kitty, Alacritty, WezTerm, Ghostty).
 
 ## Build
 
