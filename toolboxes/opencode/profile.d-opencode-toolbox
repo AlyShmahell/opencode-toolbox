@@ -1,0 +1,6 @@
+# Prefer the toolbox-managed OpenCode binary over host copies in $HOME.
+if [[ -f /run/.toolboxenv && -x /usr/local/bin/opencode ]]; then
+  opencode() {
+    command /usr/local/bin/opencode "$@"
+  }
+fi

@@ -1,0 +1,8 @@
+bash
+ca-certificates
+libcap2-bin
+libnss-myhostname
+passwd
+procps
+sudo
+util-linux

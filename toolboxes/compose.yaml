@@ -1,0 +1,8 @@
+services:
+  opencode:
+    image: localhost/opencode:latest
+    build:
+      context: ./opencode
+      dockerfile: Containerfile
+      args:
+        OPENCODE_VERSION: v1.18.2

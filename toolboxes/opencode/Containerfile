@@ -1,0 +1,50 @@
+# Stage 1: download OpenCode (discarded)
+FROM docker.io/library/debian:bookworm-slim AS fetch
+ARG OPENCODE_VERSION=v1.18.2
+ARG TARGETARCH
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ca-certificates curl && \
+    case "$TARGETARCH" in \
+      amd64) ARCH=x64 ;; \
+      arm64) ARCH=arm64 ;; \
+      *) echo "Unsupported architecture: $TARGETARCH" >&2; exit 1 ;; \
+    esac && \
+    curl -fsSL "https://github.com/anomalyco/opencode/releases/download/${OPENCODE_VERSION}/opencode-linux-${ARCH}.tar.gz" \
+      | tar -xz -C /tmp opencode && \
+    chmod +x /tmp/opencode
+
+# Stage 2: runtime — only Toolbx + OpenCode binary
+FROM docker.io/library/debian:bookworm-slim
+
+ARG NAME=opencode
+ARG VERSION=1
+
+LABEL com.github.containers.toolbox="true" \
+      name="$NAME" \
+      version="$VERSION" \
+      usage="This image is meant to be used with the toolbox(1) command" \
+      summary="Minimal Toolbx image with OpenCode" \
+      org.opencontainers.image.source="https://github.com/AlyShmahell/localai-toolbox" \
+      org.opencontainers.image.authors="alyshmahell" \
+      org.opencontainers.image.description="Minimal Toolbx image with OpenCode" \
+      org.opencontainers.image.licenses="BSD-3-Clause"
+
+COPY packages.txt /
+COPY profile.d-opencode-toolbox /etc/profile.d/99-opencode-toolbox.sh
+
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+      $(grep -v '^#' /packages.txt | grep -v '^[[:space:]]*$' | tr '\n' ' ') && \
+    rm -f /packages.txt && \
+    echo '%sudo ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/99-sudo-nopasswd && \
+    chmod 440 /etc/sudoers.d/99-sudo-nopasswd && \
+    mkdir -p /home /usr/share/empty && \
+    chmod 755 /home && \
+    rm -rf /var/lib/apt/lists/*
+
+COPY --from=fetch /tmp/opencode /usr/local/bin/opencode
+COPY opencode-session /usr/local/bin/opencode-session
+RUN chmod 755 /usr/local/bin/opencode-session && opencode --version
+
+ENTRYPOINT []
+CMD ["/bin/bash"]
