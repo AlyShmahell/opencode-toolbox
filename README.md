@@ -28,7 +28,7 @@ Building from source, updating OpenCode, and more: [docs/opencode-toolbox.md](do
 
 1. Download the VSIX from the [latest release](https://github.com/AlyShmahell/localai-toolbox/releases/latest)
 2. Extensions → `…` → **Install from VSIX…**
-3. Open Command Palette → **OpenCode Toolbox: Open** (`Ctrl+Esc` / `Cmd+Esc`)
+3. Open Command Palette → **OpenCode Toolbox: Open**
 
 Direct asset (v0.1.0):
 

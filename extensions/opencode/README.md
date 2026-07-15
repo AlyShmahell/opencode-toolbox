@@ -19,7 +19,7 @@ toolbox create --image ghcr.io/alyshmahell/opencode-toolbox:1.18.2 --container o
 
 1. Download the VSIX from the [latest release](https://github.com/AlyShmahell/localai-toolbox/releases/latest)  
    (`opencode-toolbox-extension-0.1.0.vsix`)
-2. Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`) → **Extensions: Install from VSIX…**
+2. Command Palette → **Extensions: Install from VSIX…**
 3. Select the downloaded `.vsix` file
 4. Reload the window if prompted
 
@@ -31,10 +31,8 @@ You can also drag the `.vsix` onto the Extensions view.
 
 ## Commands
 
-| Command | Default keybinding |
-|---|---|
-| OpenCode Toolbox: Open | `Ctrl+Esc` / `Cmd+Esc` |
-| OpenCode Toolbox: Open in New Terminal | `Ctrl+Shift+Esc` / `Cmd+Shift+Esc` |
-| OpenCode Toolbox: Insert File Reference | `Ctrl+Alt+K` / `Cmd+Alt+K` |
+- OpenCode Toolbox: Open
+- OpenCode Toolbox: Open in New Terminal
+- OpenCode Toolbox: Insert File Reference
 
 Local packaging, settings, and lifecycle details: [docs/extension-development.md](../../docs/extension-development.md).
