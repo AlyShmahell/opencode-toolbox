@@ -1,21 +1,25 @@
 {
-  "name": "opencode-toolbox",
+  "name": "opencode-toolbox-extension",
   "displayName": "OpenCode Toolbox",
   "description": "Launch OpenCode inside a Podman Toolbx container from VS Code / Cursor",
   "version": "0.1.0",
-  "publisher": "localai-toolbox",
+  "publisher": "alyshmahell",
   "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
     "url": "https://github.com/AlyShmahell/localai-toolbox"
   },
   "engines": {
-    "vscode": "^1.94.0"
+    "vscode": "^1.85.0"
   },
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onCommand:localaiOpencode.open",
+    "onCommand:localaiOpencode.openNew",
+    "onCommand:localaiOpencode.insertFileRef"
+  ],
   "main": "./dist/extension.js",
   "icon": "images/icon.png",
   "contributes": {
@@ -97,11 +101,11 @@
     "compile": "node esbuild.mjs --production",
     "watch": "node esbuild.mjs --watch",
     "check-types": "tsc --noEmit",
-    "package": "npm run compile && vsce package --no-dependencies -o opencode-toolbox-0.1.0.vsix"
+    "package": "npm run compile && vsce package --no-dependencies -o opencode-toolbox-extension-0.1.0.vsix"
   },
   "devDependencies": {
     "@types/node": "^20.17.0",
-    "@types/vscode": "^1.94.0",
+    "@types/vscode": "^1.85.0",
     "@vscode/vsce": "^3.3.2",
     "esbuild": "^0.25.3",
     "typescript": "^5.8.3"
