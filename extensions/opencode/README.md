@@ -17,7 +17,7 @@ toolbox create --image ghcr.io/alyshmahell/opencode-toolbox:1.18.2 --container o
 
 ## Install in Cursor / VS Code
 
-1. Download the VSIX from the [latest release](https://github.com/AlyShmahell/localai-toolbox/releases/latest)  
+1. Download the VSIX from the [latest release](https://github.com/AlyShmahell/toolboxai/releases/latest)  
    (`opencode-toolbox-extension-0.1.0.vsix`)
 2. Command Palette → **Extensions: Install from VSIX…**
 3. Select the downloaded `.vsix` file
@@ -25,7 +25,7 @@ toolbox create --image ghcr.io/alyshmahell/opencode-toolbox:1.18.2 --container o
 
 Direct asset:
 
-https://github.com/AlyShmahell/localai-toolbox/releases/download/v0.1.0/opencode-toolbox-extension-0.1.0.vsix
+https://github.com/AlyShmahell/toolboxai/releases/download/v0.1.0/opencode-toolbox-extension-0.1.0.vsix
 
 You can also drag the `.vsix` onto the Extensions view.
 

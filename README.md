@@ -1,4 +1,4 @@
-# localai-toolbox
+# toolboxai
 
 Podman Toolbox images and IDE extensions for local AI tools.
 
@@ -26,13 +26,13 @@ Building from source, updating OpenCode, and more: [docs/opencode-toolbox.md](do
 
 ## VS Code / Cursor extension
 
-1. Download the VSIX from the [latest release](https://github.com/AlyShmahell/localai-toolbox/releases/latest)
+1. Download the VSIX from the [latest release](https://github.com/AlyShmahell/toolboxai/releases/latest)
 2. Extensions → `…` → **Install from VSIX…**
 3. Open Command Palette → **OpenCode Toolbox: Open**
 
 Direct asset (v0.1.0):
 
-https://github.com/AlyShmahell/localai-toolbox/releases/download/v0.1.0/opencode-toolbox-extension-0.1.0.vsix
+https://github.com/AlyShmahell/toolboxai/releases/download/v0.1.0/opencode-toolbox-extension-0.1.0.vsix
 
 In Cursor: Command Palette → **Extensions: Install from VSIX…** (or drag the `.vsix` onto the Extensions view).
 
