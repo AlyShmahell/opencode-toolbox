@@ -1,5 +1,5 @@
 {
-  "name": "opencode-toolbox-extension",
+  "name": "opencode-toolbox-vscode",
   "displayName": "OpenCode Toolbox",
   "description": "Launch OpenCode inside a Podman Toolbx container from VS Code / VSCodium",
   "version": "0.1.1",
@@ -101,7 +101,7 @@
     "compile": "node esbuild.mjs --production",
     "watch": "node esbuild.mjs --watch",
     "check-types": "tsc --noEmit",
-    "package": "npm run compile && vsce package --no-dependencies -o opencode-toolbox-extension-0.1.1.vsix"
+    "package": "npm run compile && vsce package --no-dependencies -o opencode-toolbox-vscode-0.1.1.vsix"
   },
   "devDependencies": {
     "@types/node": "^20.17.0",

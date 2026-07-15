@@ -29,7 +29,7 @@ Ops and build details: [docs/opencode-toolbox.md](docs/opencode-toolbox.md).
 
 ## Extensions
 
-### opencode-toolbox-extension
+### opencode-toolbox-vscode
 
 > [!CAUTION]
 > This project is not built by the OpenCode team and is not affiliated with OpenCode / anomalyco in any way.
@@ -40,7 +40,7 @@ Ops and build details: [docs/opencode-toolbox.md](docs/opencode-toolbox.md).
 
 Direct asset (v0.1.1):
 
-https://github.com/AlyShmahell/toolboxai/releases/download/v0.1.1/opencode-toolbox-extension-0.1.1.vsix
+https://github.com/AlyShmahell/toolboxai/releases/download/v0.1.1/opencode-toolbox-vscode-0.1.1.vsix
 
 In VSCodium: Command Palette → **Extensions: Install from VSIX…** (or drag the `.vsix` onto the Extensions view).
 

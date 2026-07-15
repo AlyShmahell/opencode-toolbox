@@ -1,4 +1,4 @@
-# opencode-toolbox-extension (development)
+# opencode-toolbox-vscode (development)
 
 ## Local package
 
@@ -8,7 +8,7 @@ npm install
 npm run package
 ```
 
-Produces `opencode-toolbox-extension-<version>.vsix` (gitignored). Install via Command Palette → **Extensions: Install from VSIX…** (or drag onto the Extensions view). Extension ID: `alyshmahell.opencode-toolbox-extension`.
+Produces `opencode-toolbox-vscode-<version>.vsix` (gitignored). Install via Command Palette → **Extensions: Install from VSIX…** (or drag onto the Extensions view). Extension ID: `alyshmahell.opencode-toolbox-vscode`.
 
 Toolbox image ops/build: [docs/opencode-toolbox.md](opencode-toolbox.md).
 
