@@ -33,12 +33,12 @@ function shellQuote(value: string): string {
 }
 
 function getContainer(): string {
-  return vscode.workspace.getConfiguration("localaiOpencode").get<string>("container", "opencode");
+  return vscode.workspace.getConfiguration("opencodeToolbox").get<string>("container", "opencode");
 }
 
 function getBinary(): string {
   return vscode.workspace
-    .getConfiguration("localaiOpencode")
+    .getConfiguration("opencodeToolbox")
     .get<string>("binary", "/usr/local/bin/opencode");
 }
 
@@ -273,9 +273,9 @@ export function activate(context: vscode.ExtensionContext): void {
   extensionUri = context.extensionUri;
 
   context.subscriptions.push(
-    vscode.commands.registerCommand("localaiOpencode.open", () => openTerminal(false)),
-    vscode.commands.registerCommand("localaiOpencode.openNew", () => openTerminal(true)),
-    vscode.commands.registerCommand("localaiOpencode.insertFileRef", () => insertFileRef()),
+    vscode.commands.registerCommand("opencodeToolbox.open", () => openTerminal(false)),
+    vscode.commands.registerCommand("opencodeToolbox.openNew", () => openTerminal(true)),
+    vscode.commands.registerCommand("opencodeToolbox.insertFileRef", () => insertFileRef()),
     vscode.window.onDidCloseTerminal(onDidCloseTerminal),
     {
       dispose: () => {

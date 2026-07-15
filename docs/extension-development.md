@@ -1,4 +1,4 @@
-# OpenCode Toolbox extension (development)
+# opencode-toolbox-extension (development)
 
 ## Local package
 
@@ -10,12 +10,14 @@ npm run package
 
 Produces `opencode-toolbox-extension-<version>.vsix` (gitignored). Install via Command Palette → **Extensions: Install from VSIX…** (or drag onto the Extensions view). Extension ID: `alyshmahell.opencode-toolbox-extension`.
 
+Toolbox image ops/build: [docs/opencode-toolbox.md](opencode-toolbox.md).
+
 ## Settings
 
 | Setting | Default | Description |
 |---|---|---|
-| `localaiOpencode.container` | `opencode` | Toolbx container name |
-| `localaiOpencode.binary` | `/usr/local/bin/opencode` | OpenCode path inside the toolbox |
+| `opencodeToolbox.container` | `opencode` | Toolbx container name |
+| `opencodeToolbox.binary` | `/usr/local/bin/opencode` | OpenCode path inside the toolbox |
 
 ## How it works
 

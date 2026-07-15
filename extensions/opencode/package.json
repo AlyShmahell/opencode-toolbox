@@ -2,7 +2,7 @@
   "name": "opencode-toolbox-extension",
   "displayName": "OpenCode Toolbox",
   "description": "Launch OpenCode inside a Podman Toolbx container from VS Code / Cursor",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "alyshmahell",
   "license": "BSD-3-Clause",
   "repository": {
@@ -16,9 +16,9 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:localaiOpencode.open",
-    "onCommand:localaiOpencode.openNew",
-    "onCommand:localaiOpencode.insertFileRef"
+    "onCommand:opencodeToolbox.open",
+    "onCommand:opencodeToolbox.openNew",
+    "onCommand:opencodeToolbox.insertFileRef"
   ],
   "main": "./dist/extension.js",
   "icon": "images/icon.png",
@@ -30,7 +30,7 @@
     },
     "commands": [
       {
-        "command": "localaiOpencode.open",
+        "command": "opencodeToolbox.open",
         "title": "OpenCode Toolbox: Open",
         "icon": {
           "light": "images/button-light.png",
@@ -38,7 +38,7 @@
         }
       },
       {
-        "command": "localaiOpencode.openNew",
+        "command": "opencodeToolbox.openNew",
         "title": "OpenCode Toolbox: Open in New Terminal",
         "icon": {
           "light": "images/button-light.png",
@@ -46,35 +46,35 @@
         }
       },
       {
-        "command": "localaiOpencode.insertFileRef",
+        "command": "opencodeToolbox.insertFileRef",
         "title": "OpenCode Toolbox: Insert File Reference"
       }
     ],
     "menus": {
       "editor/title": [
         {
-          "command": "localaiOpencode.openNew",
+          "command": "opencodeToolbox.openNew",
           "group": "navigation"
         }
       ]
     },
     "keybindings": [
       {
-        "command": "localaiOpencode.open",
+        "command": "opencodeToolbox.open",
         "key": "ctrl+escape",
         "mac": "cmd+escape",
         "win": "ctrl+escape",
         "linux": "ctrl+escape"
       },
       {
-        "command": "localaiOpencode.openNew",
+        "command": "opencodeToolbox.openNew",
         "key": "ctrl+shift+escape",
         "mac": "cmd+shift+escape",
         "win": "ctrl+shift+escape",
         "linux": "ctrl+shift+escape"
       },
       {
-        "command": "localaiOpencode.insertFileRef",
+        "command": "opencodeToolbox.insertFileRef",
         "key": "ctrl+alt+k",
         "mac": "cmd+alt+k",
         "win": "ctrl+alt+k",
@@ -84,12 +84,12 @@
     "configuration": {
       "title": "OpenCode Toolbox",
       "properties": {
-        "localaiOpencode.container": {
+        "opencodeToolbox.container": {
           "type": "string",
           "default": "opencode",
           "description": "Toolbx container name to run OpenCode in"
         },
-        "localaiOpencode.binary": {
+        "opencodeToolbox.binary": {
           "type": "string",
           "default": "/usr/local/bin/opencode",
           "description": "Path to the OpenCode binary inside the toolbox"
@@ -101,7 +101,7 @@
     "compile": "node esbuild.mjs --production",
     "watch": "node esbuild.mjs --watch",
     "check-types": "tsc --noEmit",
-    "package": "npm run compile && vsce package --no-dependencies -o opencode-toolbox-extension-0.1.0.vsix"
+    "package": "npm run compile && vsce package --no-dependencies -o opencode-toolbox-extension-0.1.1.vsix"
   },
   "devDependencies": {
     "@types/node": "^20.17.0",

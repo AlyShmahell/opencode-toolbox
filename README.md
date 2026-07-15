@@ -9,9 +9,11 @@ Podman Toolbox images and IDE extensions for local AI tools.
 - [Podman](https://podman.io/)
 - [Toolbx](https://containertoolbx.org/) (`toolbox`)
 
-Host install notes: [docs/opencode-toolbox.md](docs/opencode-toolbox.md).
+Ubuntu host packages: see [docs/opencode-toolbox.md](docs/opencode-toolbox.md#host-install-ubuntu).
 
-## OpenCode toolbox (GHCR)
+## Toolboxes
+
+### opencode-toolbox
 
 ```bash
 toolbox create --image ghcr.io/alyshmahell/opencode-toolbox:1.18.2 --container opencode
@@ -22,18 +24,20 @@ Prefer `/usr/local/bin/opencode` if a host install (e.g. Volta) shadows `opencod
 
 Package: [ghcr.io/alyshmahell/opencode-toolbox](https://github.com/users/AlyShmahell/packages/container/package/opencode-toolbox)
 
-Building from source, updating OpenCode, and more: [docs/opencode-toolbox.md](docs/opencode-toolbox.md).
+Ops and build details: [docs/opencode-toolbox.md](docs/opencode-toolbox.md).
 
-## VS Code / Cursor extension
+## Extensions
+
+### opencode-toolbox-extension
 
 1. Download the VSIX from the [latest release](https://github.com/AlyShmahell/toolboxai/releases/latest)
 2. Extensions → `…` → **Install from VSIX…**
 3. Open Command Palette → **OpenCode Toolbox: Open**
 
-Direct asset (v0.1.0):
+Direct asset (v0.1.1):
 
-https://github.com/AlyShmahell/toolboxai/releases/download/v0.1.0/opencode-toolbox-extension-0.1.0.vsix
+https://github.com/AlyShmahell/toolboxai/releases/download/v0.1.1/opencode-toolbox-extension-0.1.1.vsix
 
 In Cursor: Command Palette → **Extensions: Install from VSIX…** (or drag the `.vsix` onto the Extensions view).
 
-Extension details and local development: [extensions/opencode/README.md](extensions/opencode/README.md) and [docs/extension-development.md](docs/extension-development.md).
+Details and local packaging: [extensions/opencode/README.md](extensions/opencode/README.md) and [docs/extension-development.md](docs/extension-development.md).
