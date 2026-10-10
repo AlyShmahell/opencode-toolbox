@@ -1,4 +1,4 @@
-# toolboxai
+# opencode-toolbox
 
 a container toolbox for opencode with a compatible vscode extension.
 
