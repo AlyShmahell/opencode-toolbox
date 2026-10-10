@@ -21,7 +21,7 @@ toolbox enter opencode
 
 ## opencode-toolbox-vscode-extension
 
-1. Download the VSIX from the [latest release](https://github.com/AlyShmahell/toolboxai/releases/latest)
+1. Download the VSIX from the [latest release](https://github.com/AlyShmahell/opencode-toolbox/releases/latest)
 2. in **vscode**: Extensions → `…` → **Install from VSIX…**
     - in **vscodium**: Command Palette → **Extensions: Install from VSIX…** (or drag the `.vsix` onto the Extensions view).
 3. in both **vscode** and **vscodium**: Command Palette → **OpenCode Toolbox: Open**

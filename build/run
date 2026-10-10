@@ -44,7 +44,7 @@ pause() {
 
 draw_menu() {
   tput clear 2>/dev/null || printf '\033[H\033[2J'
-  printf 'toolboxai\n\n'
+  printf 'opencode-toolbox\n\n'
   local i
   for i in "${!items[@]}"; do
     if (( i == selected )); then
