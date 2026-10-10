@@ -5,4 +5,4 @@ services:
       context: ./opencode
       dockerfile: Containerfile
       args:
-        OPENCODE_VERSION: v1.18.2
+        OPENCODE_VERSION: v1.18.35

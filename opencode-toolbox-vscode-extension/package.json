@@ -2,7 +2,7 @@
   "name": "opencode-toolbox-vscode",
   "displayName": "OpenCode Toolbox",
   "description": "Launch OpenCode inside a Podman Toolbx container from VS Code / VSCodium",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "publisher": "alyshmahell",
   "license": "BSD-3-Clause",
   "repository": {

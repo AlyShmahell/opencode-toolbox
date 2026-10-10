@@ -1,0 +1,12 @@
+name: opencode-toolbox-vsix
+
+services:
+  vsix:
+    build:
+      context: .
+      dockerfile: Containerfile
+    volumes:
+      - ../opencode-toolbox-vscode-extension:/src:Z
+      - ./dist:/out:Z
+      - /src/node_modules
+      - /src/dist

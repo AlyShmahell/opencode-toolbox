@@ -1,0 +1,16 @@
+FROM docker.io/library/node:20-bookworm-slim
+
+WORKDIR /src
+
+RUN printf '%s\n' \
+      '#!/bin/sh' \
+      'set -eu' \
+      'mkdir -p /out' \
+      'npm ci' \
+      'npm run compile' \
+      'version=$(node -p "require('"'"'./package.json'"'"').version")' \
+      'npx vsce package --no-dependencies -o "/out/opencode-toolbox-vscode-${version}.vsix"' \
+      > /usr/local/bin/package-vsix \
+ && chmod 755 /usr/local/bin/package-vsix
+
+CMD ["package-vsix"]

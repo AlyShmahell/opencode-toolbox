@@ -1,4 +1,5 @@
 bash
+git
 ca-certificates
 libcap2-bin
 libnss-myhostname

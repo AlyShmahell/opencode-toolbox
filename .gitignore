@@ -8,4 +8,5 @@ out/
 .env
 .env.*
 *.vsix
-
+build/dist/*
+!build/dist/.gitkeep

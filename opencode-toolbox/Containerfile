@@ -1,6 +1,6 @@
 # Stage 1: download OpenCode (discarded)
 FROM docker.io/library/debian:bookworm-slim AS fetch
-ARG OPENCODE_VERSION=v1.18.2
+ARG OPENCODE_VERSION=v1.18.35
 ARG TARGETARCH
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ca-certificates curl && \

@@ -1,0 +1,132 @@
+#!/usr/bin/env bash
+# Arrow-key menu: package the extension, or build and push the toolbox image.
+set -u
+
+ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
+cd "$ROOT"
+
+items=(
+  "Build VSIX"
+  "Build and push image"
+  "Quit"
+)
+selected=0
+
+if [[ ! -t 0 || ! -t 1 ]]; then
+  echo "build/run needs a terminal." >&2
+  exit 1
+fi
+
+saved_stty=$(stty -g)
+
+show_cursor() {
+  stty "$saved_stty" 2>/dev/null || true
+  tput cnorm 2>/dev/null || true
+}
+
+hide_cursor() {
+  tput civis 2>/dev/null || true
+}
+
+cleanup() {
+  show_cursor
+}
+
+trap cleanup EXIT
+trap 'cleanup; exit 130' INT
+trap 'cleanup; exit 143' TERM
+
+pause() {
+  echo
+  printf 'Press Enter to return to the menu.'
+  read -r _
+}
+
+draw_menu() {
+  tput clear 2>/dev/null || printf '\033[H\033[2J'
+  printf 'toolboxai\n\n'
+  local i
+  for i in "${!items[@]}"; do
+    if (( i == selected )); then
+      printf '  \033[7m %s \033[0m\n' "${items[$i]}"
+    else
+      printf '    %s\n' "${items[$i]}"
+    fi
+  done
+  printf '\nUp/Down to move, Enter to select.\n'
+}
+
+image_tag() {
+  local raw
+  raw=$(sed -n 's/^ARG OPENCODE_VERSION=//p' "$ROOT/opencode-toolbox/Containerfile" | head -n 1)
+  raw=${raw//$'\r'/}
+  if [[ -z $raw ]]; then
+    echo "OPENCODE_VERSION is not set in opencode-toolbox/Containerfile" >&2
+    return 1
+  fi
+  printf '%s\n' "${raw#v}"
+}
+
+build_vsix() {
+  show_cursor
+  tput clear 2>/dev/null || true
+  mkdir -p "$ROOT/build/dist"
+  if podman compose -f "$ROOT/build/compose.yaml" run --rm vsix; then
+    echo "VSIX written to build/dist/"
+  else
+    echo "VSIX build failed (exit $?)." >&2
+  fi
+  # Podman creates these as nested mountpoints on the host. Drop them when empty.
+  rmdir "$ROOT/opencode-toolbox-vscode-extension/node_modules" 2>/dev/null || true
+  rmdir "$ROOT/opencode-toolbox-vscode-extension/dist" 2>/dev/null || true
+  pause
+  hide_cursor
+}
+
+build_push() {
+  show_cursor
+  tput clear 2>/dev/null || true
+  local tag image
+  image="ghcr.io/alyshmahell/opencode-toolbox"
+  if ! tag=$(image_tag); then
+    :
+  elif ! podman login --get-login ghcr.io >/dev/null 2>&1; then
+    echo "podman login ghcr.io is required." >&2
+  elif podman build \
+      -f "$ROOT/opencode-toolbox/Containerfile" \
+      -t "${image}:${tag}" \
+      -t "${image}:latest" \
+      "$ROOT/opencode-toolbox" \
+    && podman push "${image}:${tag}" \
+    && podman push "${image}:latest"; then
+    echo "Pushed ${image}:${tag} and ${image}:latest"
+  else
+    echo "Image build or push failed (exit $?)." >&2
+  fi
+  pause
+  hide_cursor
+}
+
+move() {
+  local count=${#items[@]}
+  selected=$(( (selected + $1 + count) % count ))
+}
+
+hide_cursor
+while true; do
+  draw_menu
+  IFS= read -rsn1 key || exit 0
+  if [[ $key == $'\x1b' ]]; then
+    IFS= read -rsn2 -t 0.1 rest || rest=
+    case $rest in
+      '[A') move -1 ;;
+      '[B') move 1 ;;
+    esac
+  elif [[ -z $key ]]; then
+    case $selected in
+      0) build_vsix ;;
+      1) build_push ;;
+      2) exit 0 ;;
+    esac
+  fi
+done
